@@ -1,5 +1,5 @@
 from extract_titles import extract_images, extract_titles, process_images
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify # type: ignore
 import PyPDF2
 import re
 
