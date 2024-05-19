@@ -1,5 +1,5 @@
 import sys
-sys.path.append('.')
+sys.path.append('')
 from modules.text_summarization import bullet_point_summary
 
 from flask import Flask, request, jsonify

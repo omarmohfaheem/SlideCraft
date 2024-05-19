@@ -43,7 +43,6 @@ def calculate_sentence_similarity(sentence1, sentence2):
 #Function to create the similarity matrix
 def calculate_similarity_matrix(sentences):
   similarity_matrix = np.zeros((len(sentences), len(sentences)))
-  #print(similarity_matrix)
   for i in range(len(sentences)):
     for j in range(len(sentences)):
       if i == j:
@@ -59,10 +58,11 @@ def summarize(text, summary_proportion=0.4):
   scores = nx.pagerank(similarity_graph)
   ranked_sentences = sorted(((scores[i], i) for i, _ in enumerate(original_sentences)), reverse=True)
   number_of_sentences = max(1, int(len(original_sentences) * summary_proportion))
-    
   selected_indices = sorted([ranked_sentences[i][1] for i in range(number_of_sentences)])
   summary_sentences = [original_sentences[index] for index in selected_indices]
+    
   return summary_sentences
+
 
 # Function to return the summary in a bullet point format
 def bullet_point_summary(text, summary_proportion=0.4):
