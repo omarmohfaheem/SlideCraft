@@ -3,7 +3,7 @@ import openai
 import requests
 
 # Set up your OpenAI API key
-openai.api_key = 'sk-proj-TvxyJEp0VXWA0R9SGxfoT3BlbkFJpMSIRZXb5decwo7aEjBDcle'
+openai.api_key = 'sk-proj-BFdn6oJlDIQCcVRounCLT3BlbkFJD8qS1ZZ7f326a1R3Ukbd'
 
 def generate_image_from_text(sentence):
     response = openai.Image.create(
