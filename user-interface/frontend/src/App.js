@@ -1,8 +1,8 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import Home from "./Home";
-import Summarize from "./Summarize";
-import Help from "./Help";
+import Home from "./components/Home";
+import Summarize from "./components/Summarize";
+import Help from "./components/Help";
 
 function App() {
   return (
