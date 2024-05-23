@@ -19,4 +19,4 @@ pip install python-pptx
 
 ## Conclusion
 
-Slide Craft automates the creation of PowerPoint presentations from text documents, making it a valuable tool for quickly generating professional slide decks. By leveraging text summarization, image generation, and custom PowerPoint themes, SlidesAI provides a streamlined process for content presentation.
+Slide Craft automates the creation of PowerPoint presentations from text documents, making it a valuable tool for quickly generating professional slide decks. By leveraging text summarization, image generation, and custom PowerPoint themes, Slide Craft provides a streamlined process for content presentation.
