@@ -1,0 +1,123 @@
+.content-section {
+  margin-top: 180px;
+  display: flex;
+  padding-left: 100px;
+  padding-right: 100px;
+  color: #ffffff;
+  margin-bottom: 150px;
+}
+
+.content-left {
+  flex: 1;
+  margin-left: 60px;
+}
+
+.content-left h1 {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.content-left p {
+  font-size: 1.5em;
+}
+
+.content-buttons {
+  display: flex;
+  margin-top: 30px;
+}
+
+.try-now-button {
+  background: #001f3f8e;
+  text-align: center;
+  text-transform: uppercase;
+  background-size: 200% auto;
+  border-radius: 10px;
+  display: block;
+  color: #ffffff;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: background 0.3s, transform 0.3s;
+  margin-right: 15px;
+}
+
+.try-now-button:hover {
+  transform: scale(1.05);
+  color: #fff;
+  text-decoration: none;
+  background-color: #001f3fd0;
+}
+
+.how-to-use-link {
+  color: #ffffff;
+  background-color: transparent;
+  border: 0;
+  text-decoration: none;
+  font-size: 1em;
+  margin-top: 2px;
+  margin-left: 5px;
+}
+
+.how-to-use-link:hover {
+  text-decoration: underline;
+  transform: scale(1.05);
+}
+.content-right {
+  position: relative;
+  margin-top: -100px;
+}
+.content-image {
+  width: 70%;
+  margin-left: 160px;
+  transform: translateX(50px);
+  animation: slideIn 3s ease-in-out infinite;
+}
+
+/* Image Animation */
+@keyframes slideIn {
+  0% {
+    transform: translateY(12px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(12px);
+  }
+}
+
+/* Typing Animation */
+.typing-animation {
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.1em solid white;
+  animation: typing 8s steps(40, end) infinite,
+    blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 100%;
+  }
+  90% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes blink-caret {
+  0%,
+  100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: white;
+  }
+}
