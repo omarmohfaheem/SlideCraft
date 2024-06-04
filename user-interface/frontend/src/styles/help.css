@@ -1,0 +1,198 @@
+.help-header {
+  font-size: 50px;
+  text-align: center;
+  color: #ebebeb;
+  margin-bottom: 20px;
+}
+
+.help-container {
+  padding: 20px;
+  max-width: 1600px;
+  margin: 0 auto;
+  background-color: #3b74b4;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.steps-paragraph {
+  font-size: 20px;
+  margin-top: 5px;
+}
+
+.help-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 50px;
+  color: white;
+}
+
+.faq-h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 30px !important;
+  color: #3b74b4 !important;
+}
+
+.help-container p {
+  text-align: center;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.content-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.steps-container {
+  flex: 2;
+  margin-right: 20px;
+}
+
+.step {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-left: 4px solid #1890ff;
+  background-color: #fff;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.step.active {
+  background-color: #c3ecff;
+}
+
+.step-content {
+  display: flex;
+  align-items: center;
+}
+
+.step-icon {
+  font-size: 2rem;
+  margin-right: 20px;
+}
+
+.step h3 {
+  margin: 0;
+  color: #3b74b4;
+}
+
+.step p {
+  margin: 5px 0 0 0;
+  color: #181818;
+}
+
+.faq-container {
+  flex: 1;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.faq-item {
+  margin-bottom: 20px;
+}
+
+.faq-item h4 {
+  margin: 0;
+  color: #3b74b4;
+}
+
+.faq-item p {
+  margin: 5px 0 0 0;
+  color: #333;
+  text-align: left;
+}
+
+.image-header {
+  text-align: center;
+  margin-top: 5px;
+  color: white;
+  font-size: 20px;
+}
+
+.image-slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 20px;
+  background-color: #aaaaaa9f;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  width: 710px;
+  height: 600px;
+}
+
+.image-slider .arrow-button {
+  background-color: transparent;
+  border: none;
+  font-size: 2rem;
+  color: #3b74b4;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 10px;
+}
+
+.image-slider .arrow-button {
+  background-color: #3b74b4;
+  border: none;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 20px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, color 0.3s;
+  margin-left: -5px;
+  margin-right: -5px;
+}
+.image-slider .arrow-button.left {
+  left: 10px;
+}
+
+.image-slider .arrow-button.right {
+  right: 10px;
+}
+
+.image-slider .arrow-button:hover {
+  background-color: #001f3fd0;
+  color: #fff;
+}
+
+.image-slider img {
+  max-width: 100%;
+  width: 610px;
+  height: 570px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.back-button {
+  background-color: #1890ff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #125994;
+}
