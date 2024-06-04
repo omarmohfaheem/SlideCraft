@@ -27,11 +27,10 @@
 }
 
 .try-now-button {
-  background: #001f3f8e;
+  background: #1e72df;
   text-align: center;
   text-transform: uppercase;
   background-size: 200% auto;
-  border-radius: 10px;
   display: block;
   color: #ffffff;
   border: none;

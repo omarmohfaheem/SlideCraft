@@ -13,11 +13,11 @@ const Sidebar = () => {
   const [isAnimating, setAnimating] = useState(false);
 
   const handleDelayedNavigation = (path) => {
-    setAnimating(true); // Start the animation
+    setAnimating(true);
     setTimeout(() => {
       navigate(path);
-      setAnimating(false); // Reset animation state
-    }, 500); // Matches the duration of the animation
+      setAnimating(false);
+    }, 500);
   };
 
   return (

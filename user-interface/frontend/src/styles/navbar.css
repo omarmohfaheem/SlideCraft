@@ -1,6 +1,6 @@
 .navbar {
   display: flex;
-  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .navbar-left,
@@ -10,16 +10,19 @@
 }
 
 .navbar-logo {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   cursor: pointer;
-  margin-left: 10px;
+  margin-left: 20px;
+  margin-top: 8px;
+  margin-bottom: 3px;
 }
 
 .navbar-title {
   color: #ffffff;
   font-size: 40px;
-  margin-left: 10px;
+  margin-left: 20px;
+  margin-top: 10px;
   cursor: pointer;
 }
 
@@ -27,7 +30,8 @@
   display: flex;
   justify-content: center;
   flex-grow: 1;
-  margin-right: 290px;
+  margin-right: 150px;
+  margin-top: 10px;
 }
 
 .navbar-button {
@@ -41,6 +45,27 @@
 }
 
 .navbar-button:hover {
-  color: #155a8a;
+  color: #001f3f;
+  transform: scale(1.1);
+}
+
+.get-started-button {
+  background: #1e72df;
+  text-transform: uppercase;
+  color: #ffffff;
+  border: none;
+  padding: 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: background 0.3s, transform 0.3s;
+  margin-right: 15px;
+  margin-top: 5px;
+}
+
+.get-started-button:hover {
   transform: scale(1.05);
+  color: #fff;
+  text-decoration: none;
+  background-color: #001f3fd0;
 }
