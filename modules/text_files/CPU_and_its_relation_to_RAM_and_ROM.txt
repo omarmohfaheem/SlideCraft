@@ -1,0 +1,92 @@
+CPU and its relation to RAM and ROM
+F or the CPU to process information, the data must be stored in RAM or
+ROM. The function of ROM in computers is to provide information that is fixed
+and permanent. This is information such as tables for character patterns to be
+displayed on the video monitor, or programs that are essential to the working of the
+computer, such as programs for testing and finding the total amount of RAM
+installed on the system, or programs to display information on the video monitor.
+In contrast, RAM is used to store information that is not permanent and can change
+with time, such as various versions ofthe operating system and application packages
+such as word processing or tax calculation packages. These programs are loaded
+into RAM to be processed by the CPU. The CPU cannot get the information from
+the disk directly since the disk is too slow. In other words, the CPU gets the
+information to be processed, first from RAM (or ROM). Only ifit is not there does
+the CPU seek it from a mass storage device such as a disk, and then it transfers the
+information to RAM. For this reason, RAM and ROM are sometimes referred to
+as primary memory and disks are called secondary memory. Figure 0-4 shows a
+block diagram of the internal organization of the PC. 
+Inside CPUs
+A program stored in memory provides instructions to the CPU to perform
+an action. The action can simply be adding data such as payroll data or controlling
+a machine such as a robot. It is the function of the CPU to fetch these instructions
+from memory and execute them. To perform the actions of fetch and execute, all
+CPUs are equipped with resources such as the following:
+I. Foremost among the resources at the disposal of the CPU are a number of registers.
+The CPU uses registers to store information temporarily. The information could be
+two values to be processed, or the address of the value needed to be fetched from
+memory. Registers inside the CPU can be 8-bit, 16-bit, 32-bit, or even 64-bit
+registers, depending on the CPU. In general, the more and bigger the registers, the
+better the CPU. The disadvantage of more and bigger registers is the increased cost
+of such a CPU.
+2. The CPU also has what is called the ALU (arithmetic/logic unit). The ALU section
+of the CPU is responsible for performing arithmetic functions such as add, subtract,
+multiply, and divide, and logic functions such as AND, OR, and NOT.
+3. Every CPU has what is called a program counter. The function of the program
+counter is to point to the address of the next instruction to be executed. As each
+instruction is executed, the program counter is incremented to point to the address
+of the next instruction to be executed. It is the contents of the program counter that
+are placed on the address bus to find and fetch the desired instruction. In the IBM
+PC, the program counter is a register called IP, or the instruction pointer. 
+4. The function of the instruction decoder is to interpret the instruction fetched into
+the CPU. One can think of the instruction decoder as a kind of dictionary, storing
+the meaning of each instruction and what steps the CPU should take upon receiving
+a given instruction. Just as a dictionary requires more pages the more words it
+defines, a CPU capable of understanding more instructions requires more transistors
+to design.
+Internal working of computers
+To demonstrate some of the concepts discussed above, a step-by-step
+analysis of the process a CPU would go through to add three numbers is given next.
+Assume that an imaginary CPU has registers called A, B, C, and D. It has an 8-bit
+data bus and a 16-bit address bus. Therefore, the CPU can access memory from
+addresses 0000 to FFFFH (for a total of 10000H locations). The action to be
+performed by the CPU is to put hexadecimal value 21 into register A, and then add
+to register A values 42H and 12H. Assume that the code for the CPU to move a
+value to register A is 1011 0000 (BOH) and the code for adding a value to register
+A is 0000 01 00 (04H). The necessary steps and code to perform them are as follows. 
+The actions performed by the CPU to run the program above would be as
+follows:
+I. The CPU's program counter can have a value between 0000 and FFFFH. The
+program counter must be set to the value 1400H, indicating the address of the first
+instruction code to be executed. After the program counter has been loaded with
+the address of the first instruction, the CPU is ready to execute.
+2. The CPU puts 1400H on the address bus and sends it out. The memory circuitry
+finds the location while the CPU activates the READ signal, indicating to memory
+that it wants the byte at location 1400H. This causes the contents of memory
+location 1400H, which is BO, to be put on the data bus and brought into the CPU.
+3. The CPU decodes the instruction BO with the help of its instruction decoder
+dictionary. When it finds the definition for that instruction it knows it must bring
+into register A of the CPU the byte in the next memory location. Therefore, it
+commands its controller circuitry to do exactly that. When it brings in value 21H
+from memory location 140 I, it makes sure that the doors of all registers are closed
+except register A. Therefore, when value 21 H comes into the CPU it will go directly
+into register A. After completing one instruction, the program counter points to the
+address ofthe next instruction to be executed, which in this case is 1402H. Address
+1402 is sent out on the address bus to fetch the next instruction.
+4. From memory location 1402H it fetches code 04H. After decoding, the CPU knows
+that it must add to the contents of register A the byte sitting at the next address (1403).
+After it brings the value (in this case 42H) into the CPU, it provides the contents of 
+register A along with this value to the ALU to perform the addition. It then takes
+the result ofthe addition from the ALU's output and puts it in register A. Meanwhile
+the program counter becomes 1404, the address of the next instruction.
+5. Address 1404H is put on the address bus and the code is fetched into the CPU,
+decoded, and executed. This code is again adding a value to register A. The program
+counter is updated to 1406H.
+6. Finally, the contents of address 1406 are fetched in and executed. This HALT
+instruction tells the CPU to stop incrementing the program counter and asking for
+the next instruction. [n the absence of the HALT, the CPU would continue updating
+the program counter and fetching instructions.
+Now suppose that address 1403H contained value 04 instead of 42H. How
+would the CPU distinguish between data 04 to be added and code 04? Remember
+that code 04 for this CPU means move the next value into register A. Therefore,
+the CPU will not try to decode the next value. It simply moves the contents of the
+following memory location into register A, regardless of its value. 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/help.css";
+import { useNavigate } from "react-router-dom";
 import step1 from "../images/steps/step1.png";
 import step2 from "../images/steps/step2.png";
 import step3 from "../images/steps/step3.png";
@@ -9,6 +10,10 @@ import Bubbles from "./../components/Bubbles";
 import Sidebar from "./../components/Sidebar";
 
 const Help = () => {
+  const navigate = useNavigate();
+  const handleTryNow = () => {
+    navigate("/slides-creator");
+  };
   const steps = [
     {
       title: "Step 1: Enter Title",
@@ -27,7 +32,7 @@ const Help = () => {
     {
       title: "Step 3: Setup Presentation",
       content:
-        "Customize your presentation by setting the number of slides, choosing whether to include additional title and thank you slides, deciding if you want to include images, selecting a theme, and opting for narration.",
+        "Customize your presentation by setting the number of slides, choosing whether to include additional title and thank you slides, deciding if you want to include images, selecting a theme.",
       icon: "⚙️",
       image: step3,
     },
@@ -88,7 +93,7 @@ const Help = () => {
               <div className="faq-item">
                 <h4>How do I upload a document?</h4>
                 <p>
-                  Click on the "Choose File" button under the text area to
+                  Click on the "Choose a File..." button under the text area to
                   upload a document.
                 </p>
               </div>
@@ -128,6 +133,9 @@ const Help = () => {
                 &gt;
               </button>
             </div>
+            <button onClick={handleTryNow} className="try-now">
+              Try Now
+            </button>
           </div>
           <Bubbles />
         </div>
