@@ -1,8 +1,11 @@
-from flask import Flask, request, render_template, send_file, jsonify
+#Importing the libraries
 import os
+from flask import Flask, request, render_template, send_file, jsonify
 from werkzeug.utils import secure_filename
-from slide_generation import generate_slides
 from flask_cors import CORS
+
+#Importing Modules
+from slide_generation import generate_slides
 
 app = Flask(__name__)
 CORS(app)

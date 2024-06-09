@@ -50,7 +50,8 @@ def calculate_similarity_matrix(sentences):
       similarity_matrix[i][j] = calculate_sentence_similarity(sentences[i], sentences[j])
   return similarity_matrix
 
-def summarize(text, summary_proportion=0.4):
+#Function to summarize the text
+def summarize(text, summary_proportion=0.5):
   original_sentences = [sentence for sentence in nltk.sent_tokenize(text)]
   formatted_sentences = [preprocess_text(sentence) for sentence in original_sentences]
   similarity_matrix = calculate_similarity_matrix(formatted_sentences)
@@ -65,7 +66,7 @@ def summarize(text, summary_proportion=0.4):
 
 
 # Function to return the summary in a bullet point format
-def bullet_point_summary(text, summary_proportion=0.4):
+def bullet_point_summary(text, summary_proportion=0.5):
   summary_sentences = summarize(text, summary_proportion)
   bullet_points = '\n'.join(f'\u2022 {sentence.strip()}' for sentence in summary_sentences if sentence.strip())
   return bullet_points

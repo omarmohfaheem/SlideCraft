@@ -1,3 +1,4 @@
+#Importing the libraries
 import PyPDF2
 from docx import Document
 
@@ -47,17 +48,3 @@ def read_file(file_path, lines_threshold=1):
     
     return remove_title(text, lines_threshold)
 
-# import tkinter as tk
-# from tkinter import filedialog
-# root = tk.Tk()
-# root.withdraw() 
-# file_path = filedialog.askopenfilename(
-# title="Select a PDF, TXT, or DOCX file",
-# filetypes=[("PDF, Text, and Word files", "*.pdf;*.txt;*.docx"), ("All files", "*.*")]
-# )
-# if file_path.lower().endswith(('.pdf', '.txt', '.docx')):
-#     content = read_file(file_path)
-#     print("File content:")
-#     print(content)
-# else:
-#     print("No file selected or unsupported file type")

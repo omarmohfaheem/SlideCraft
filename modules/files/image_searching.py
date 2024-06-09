@@ -1,3 +1,4 @@
+#Importing the libraries
 import requests
 from PIL import Image, UnidentifiedImageError
 from io import BytesIO
@@ -20,7 +21,6 @@ def search_google_images(query):
         'num': 10,  
         'fileType': 'jpg,png',
     }
-
     try:
         result = service.cse().list(**search_params).execute()
 

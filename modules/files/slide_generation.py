@@ -222,14 +222,3 @@ def generate_slides(title, input_data, is_file, num_slides, additional_slides, u
     
     return presentation_stream
 
-# # Example usage
-# generate_slides(
-#     input_data="../text_files/Eiffel Tower.pdf",
-#     is_file=True,
-#     title="Eiffel Tower",
-#     num_slides=2,
-#     additional_slides=True,
-#     use_images=False,
-#     image_source="openai",
-#     theme="Modern"
-# )

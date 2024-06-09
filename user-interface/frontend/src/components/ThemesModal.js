@@ -10,12 +10,12 @@ import technology from "../images/themes/technology.jpg";
 
 const ThemesModal = ({ show, onClose, onSelectTheme }) => {
   const themes = [
-    { name: "Modern", img: modern },
-    { name: "Dark", img: dark },
-    { name: "Technology", img: technology },
-    { name: "Business", img: business },
     { name: "Abstract", img: abstract },
+    { name: "Business", img: business },
     { name: "Creative", img: creative },
+    { name: "Dark", img: dark },
+    { name: "Modern", img: modern },
+    { name: "Technology", img: technology },
   ];
 
   return (

@@ -1,7 +1,7 @@
 #Importing the libraries
-import openai
-from dotenv import load_dotenv
 import os
+from dotenv import load_dotenv
+import openai
 import requests
 
 # Load environment variables from .env file

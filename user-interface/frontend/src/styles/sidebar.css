@@ -44,8 +44,8 @@
 .sidebar-link {
   color: white;
   text-decoration: none;
-  background: none; /* Removes any background */
-  border: none; /* Removes any border */
+  background: none;
+  border: none;
   font-size: 24px;
   transition: color 0.3s;
   display: block;
