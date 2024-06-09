@@ -7,7 +7,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const handleFeatures = () => {
     window.scrollBy({
-      top: "550",
+      top: "600",
       behavior: "smooth",
     });
   };

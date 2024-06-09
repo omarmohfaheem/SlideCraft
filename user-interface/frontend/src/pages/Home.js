@@ -30,11 +30,14 @@ const Home = () => {
           <h1 className="typing-animation">
             Effortless Slides, It is as simple as that.
           </h1>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book.
+          <p className="description">
+            Slide Craft is your ultimate solution for transforming text
+            documents into professional PowerPoint presentations effortlessly.
+            With smart summarization, title generation, variety of themes and
+            AI-powered visuals, creating high-quality slides is quick and
+            simple. Perfect for developers, educators, students, and
+            professionals, Slide Craft saves time and ensures polished, engaging
+            presentations.
           </p>
           <div className="content-buttons">
             <button onClick={Generate} className="try-now-button">
@@ -76,15 +79,14 @@ const Home = () => {
             </p>
           </div>
           <div className="feature-box">
-            <div className="feature-icon">📝</div>
-            <h3>Transform Complex Tasks into Simplicity</h3>
+            <div className="feature-icon">🤖</div>
+            <h3>AI-Powered Visuals</h3>
             <p>
-              Our PowerPoint generator takes the complexity out of creating a
-              well-structured presentation. It handles the challenging task of
-              organizing your information into clear, concise, and engaging
-              slides. It accepts long content like the documentation of your
-              work to short description of your idea. No need to worry about
-              information overload or slide formatting.
+              Elevate your presentations with AI-powered visual enhancements.
+              Our generator automatically finds or creates images and designs
+              that complement your content. This ensures your slides are
+              informative and visually engaging, capturing attention and making
+              your message impactful.
             </p>
           </div>
         </div>
