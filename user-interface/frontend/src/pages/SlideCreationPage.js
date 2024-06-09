@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "../styles/slide-creation.css";
 import ThemesModal from "../components/ThemesModal";
 import Bubbles from "../components/Bubbles";
 import Sidebar from "../components/Sidebar";
+import ClipLoader from "react-spinners/ClipLoader";
+import Confetti from "react-confetti";
 
 const SlideCreationPage = () => {
   const [title, setTitle] = useState("");
@@ -14,17 +16,18 @@ const SlideCreationPage = () => {
   const [theme, setTheme] = useState("");
   const [includeTitleAndThankYouSlides, setIncludeTitleAndThankYouSlides] =
     useState(false);
-  const [generateNarrations, setGenerateNarrations] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
   const [errors, setErrors] = useState({});
-  const fileInputRef = React.useRef();
-  const [fileName, setFileName] = useState("No file chosen");
+  const [loading, setLoading] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
+  const fileInputRef = useRef();
+  const [fileName, setFileName] = useState("Choose a file...");
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
     setFile(selectedFile);
-    setFileName(selectedFile ? selectedFile.name : "No file chosen");
+    setFileName(selectedFile ? selectedFile.name : "Choose a file...");
     if (selectedFile) setErrors((prevErrors) => ({ ...prevErrors, text: "" }));
   };
 
@@ -36,11 +39,11 @@ const SlideCreationPage = () => {
 
   const handleNumSlidesChange = (event) => {
     const value = event.target.value;
-    if (value === "" || (value >= 1 && value <= 15)) {
+    if (value === "" || (value >= 1 && value <= 99)) {
       setNumSlides(value);
       setShowTooltip(false);
       setErrors((prevErrors) => ({ ...prevErrors, slides: "" }));
-    } else if (value > 15) {
+    } else if (value > 99) {
       setShowTooltip(true);
     }
   };
@@ -59,8 +62,8 @@ const SlideCreationPage = () => {
       formErrors.text = "Text input or file upload is required.";
     if (!numSlides) {
       formErrors.slides = "Number of slides is required.";
-    } else if (numSlides > 15) {
-      formErrors.slides = "Maximum number of slides is 15.";
+    } else if (numSlides > 99) {
+      formErrors.slides = "Maximum number of slides is 99.";
     }
     if (includeImages && !imageSource)
       formErrors.imageSource = "Image source is required.";
@@ -69,25 +72,54 @@ const SlideCreationPage = () => {
     return Object.keys(formErrors).length === 0;
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (!validateForm()) return;
 
-    // Set default values
-    if (!theme) setTheme("Modern");
-    if (includeImages && !imageSource) setImageSource("openai");
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("numSlides", numSlides);
+    if (file) formData.append("file", file);
+    formData.append("textInput", textInput || "");
+    formData.append("includeImages", includeImages ? "true" : "false");
+    formData.append("imageSource", imageSource);
+    formData.append("theme", theme);
+    formData.append(
+      "includeTitleAndThankYouSlides",
+      includeTitleAndThankYouSlides ? "true" : "false"
+    );
 
-    console.log({
-      title,
-      numSlides,
-      file,
-      textInput,
-      includeImages,
-      imageSource,
-      theme,
-      includeTitleAndThankYouSlides,
-      generateNarrations,
-    });
+    setLoading(true);
+    setShowConfetti(false);
+
+    try {
+      const response = await fetch(
+        "http://localhost:5000/generate_presentation",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      if (response.ok) {
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `${title}.pptx`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setShowConfetti(true);
+        setTimeout(() => setShowConfetti(false), 2000);
+      } else {
+        console.error("Failed to generate presentation");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleReset = () => {
@@ -99,10 +131,9 @@ const SlideCreationPage = () => {
     setImageSource("");
     setTheme("");
     setIncludeTitleAndThankYouSlides(false);
-    setGenerateNarrations(false);
     setShowTooltip(false);
     setErrors({});
-    setFileName("No file chosen");
+    setFileName("Choose a file...");
     if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
@@ -150,6 +181,12 @@ const SlideCreationPage = () => {
             </label>
             {errors.text && <div className="error">{errors.text}</div>}
           </div>
+          <div className="tip">
+            <p>
+              Tip: Don't use Slide Craft as an instructional tool. don't give it
+              instructions, Simply enter your text.
+            </p>
+          </div>
         </div>
         <div className="right-column">
           <h2 className="slide-settings-header">Presentation Setup</h2>
@@ -161,12 +198,12 @@ const SlideCreationPage = () => {
                 value={numSlides}
                 onChange={handleNumSlidesChange}
                 min="1"
-                max="15"
+                max="99"
                 required
               />
             </div>
             {showTooltip && (
-              <div className="tooltip">Maximum number of slides is 15.</div>
+              <div className="tooltip">Maximum number of slides is 99.</div>
             )}
             {errors.slides && <div className="error">{errors.slides}</div>}
             <div className="checkbox">
@@ -193,11 +230,13 @@ const SlideCreationPage = () => {
                   checked={includeImages}
                   onChange={(e) => {
                     setIncludeImages(e.target.checked);
-                    if (!e.target.checked)
+                    if (!e.target.checked) {
+                      setImageSource("");
                       setErrors((prevErrors) => ({
                         ...prevErrors,
                         imageSource: "",
                       }));
+                    }
                   }}
                 />
                 <span className="checkmark"></span>
@@ -252,16 +291,6 @@ const SlideCreationPage = () => {
               />
             </div>
             {errors.theme && <div className="error">{errors.theme}</div>}
-            <div className="checkbox">
-              <label>Generate Narrations :</label>
-              <label className="text-check">
-                <input
-                  type="checkbox"
-                  checked={generateNarrations}
-                  onChange={(e) => setGenerateNarrations(e.target.checked)}
-                />
-              </label>
-            </div>
             <div className="action-buttons">
               <button
                 className="reset-button"
@@ -278,9 +307,24 @@ const SlideCreationPage = () => {
                 Create Presentation
               </button>
             </div>
+            <div className="tip-2">
+              <p>
+                If there is no enough content for the number of slides required,
+                blank slides will be generated to fulfill the requirement.
+              </p>
+            </div>
           </div>
         </div>
       </form>
+      {loading && (
+        <div className="loading-overlay">
+          <div className="loading-content">
+            <ClipLoader color="#35D55D" size={400} />
+            <p>Creating your presentation... 🤖</p>
+          </div>
+        </div>
+      )}
+      {showConfetti && <Confetti />}
       <ThemesModal
         show={showModal}
         onClose={() => setShowModal(false)}
