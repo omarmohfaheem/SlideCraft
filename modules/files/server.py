@@ -23,7 +23,7 @@ def allowed_file(filename):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return 'Hello, World!'
 
 @app.route('/generate_presentation', methods=['POST'])
 def generate_presentation():
