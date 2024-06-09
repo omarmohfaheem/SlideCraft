@@ -94,7 +94,7 @@ const SlideCreationPage = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/generate_presentation",
+        "https://slidecraft.onrender.com/generate_presentation",
         {
           method: "POST",
           body: formData,
