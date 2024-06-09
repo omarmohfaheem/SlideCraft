@@ -50,7 +50,7 @@ def calculate_chunk_size(total_bullet_points, num_slides, min_bullet_points_per_
 
 def create_presentation(theme):
     """Create a new PowerPoint presentation with the specified theme."""
-    return Presentation(f"modules/themes/{theme}.pptx")
+    return Presentation(f"../themes/{theme}.pptx")
 
 def add_new_slide(prs, header ,theme, image_stream=None):
     """Add a new slide to the presentation with the given header and image."""
