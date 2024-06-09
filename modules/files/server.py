@@ -10,6 +10,7 @@ from slide_generation import generate_slides
 # Download the punkt tokenizer for NLTK
 import nltk
 nltk.download('punkt')
+nltk.download('stopwords')
 
 app = Flask(__name__)
 CORS(app)
