@@ -31,16 +31,21 @@ def read_docx(file_path):
         print(f"Error reading DOCX file: {e}")
     return text
 
-def read_file(file_path):
+def remove_title(text, lines_threshold=1):
+    lines = text.split('\n')
+    return '\n'.join(lines[lines_threshold:])
+
+def read_file(file_path, lines_threshold=1):
     if file_path.lower().endswith('.pdf'):
-        return read_pdf(file_path)
+        text = read_pdf(file_path)
     elif file_path.lower().endswith('.txt'):
-        return read_txt(file_path)
+        text = read_txt(file_path)
     elif file_path.lower().endswith('.docx'):
-        return read_docx(file_path)
+        text = read_docx(file_path)
     else:
         return "Unsupported file type"
     
+    return remove_title(text, lines_threshold)
 
 # import tkinter as tk
 # from tkinter import filedialog
@@ -49,11 +54,10 @@ def read_file(file_path):
 # file_path = filedialog.askopenfilename(
 # title="Select a PDF, TXT, or DOCX file",
 # filetypes=[("PDF, Text, and Word files", "*.pdf;*.txt;*.docx"), ("All files", "*.*")]
-#     )
+# )
 # if file_path.lower().endswith(('.pdf', '.txt', '.docx')):
-#   content = read_file(file_path)
-#   print("File content:")
-#   print(content)
+#     content = read_file(file_path)
+#     print("File content:")
+#     print(content)
 # else:
-#   print("No file selected or unsupported file type")
-
+#     print("No file selected or unsupported file type")
