@@ -1,14 +1,19 @@
 #Importing the libraries
 import openai
+from dotenv import load_dotenv
+import os
 import requests
 
+# Load environment variables from .env file
+load_dotenv()
+
 # Set up your OpenAI API key
-# Generate new key
-openai.api_key = 'sk-proj-BFdn6oJlDIQCcVRounCLT3BlbkFJD8qS1ZZ7f326a1R3Ukbd'
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
 def generate_image_from_text(sentence):
     response = openai.Image.create(
         prompt=sentence,
+        model="dall-e-3", 
         n=1,
         size="1024x1024"
     )
