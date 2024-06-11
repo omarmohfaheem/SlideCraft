@@ -16,7 +16,10 @@ app = Flask(__name__)
 CORS(app)
 
 # Configuration for file uploads
-UPLOAD_FOLDER = os.path.join('modules', 'uploads')
+# Determine the absolute path to the 'modules' directory
+MODULES_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+# Create the 'uploads' directory within the 'modules' directory
+UPLOAD_FOLDER = os.path.join(MODULES_DIR, 'uploads')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 ALLOWED_EXTENSIONS = {'pdf', 'docx', 'txt'}
 
