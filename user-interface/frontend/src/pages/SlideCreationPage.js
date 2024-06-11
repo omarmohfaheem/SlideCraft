@@ -92,9 +92,19 @@ const SlideCreationPage = () => {
     setLoading(true);
     setShowConfetti(false);
 
+    //Deploy on Render
+    // try {
+    //   const response = await fetch(
+    //     "https://slidecraft.onrender.com/generate_presentation",
+    //     {
+    //       method: "POST",
+    //       body: formData,
+    //     }
+    //   );
+
     try {
       const response = await fetch(
-        "https://slidecraft.onrender.com/generate_presentation",
+        "http://localhost:5000/generate_presentation",
         {
           method: "POST",
           body: formData,
@@ -111,7 +121,7 @@ const SlideCreationPage = () => {
         a.click();
         a.remove();
         setShowConfetti(true);
-        setTimeout(() => setShowConfetti(false), 2000);
+        setTimeout(() => setShowConfetti(false), 3000);
       } else {
         console.error("Failed to generate presentation");
       }
@@ -320,7 +330,7 @@ const SlideCreationPage = () => {
         <div className="loading-overlay">
           <div className="loading-content">
             <ClipLoader color="#35D55D" size={400} />
-            <p>Creating your presentation... 🤖</p>
+            <p>Crafting your presentation... 🤖</p>
           </div>
         </div>
       )}
