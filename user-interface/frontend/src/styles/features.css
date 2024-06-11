@@ -70,3 +70,35 @@
     transform: translateY(0);
   }
 }
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .features-section {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .feature-box {
+    width: calc(45% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .features-section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .feature-box {
+    width: 60%;
+    margin: 20px 0;
+  }
+
+  .feature-box h3 {
+    font-size: 1.5em;
+  }
+
+  .feature-box p {
+    font-size: 1em;
+  }
+}

@@ -60,3 +60,51 @@ body {
 .footer-email:hover {
   cursor: pointer;
 }
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+  body {
+    background: #0d3968;
+  }
+
+  .content-section {
+    flex-direction: column;
+  }
+
+  .content-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .typing-animation {
+    font-size: 1.2em;
+  }
+
+  .description {
+    font-size: 0.9em;
+  }
+
+  .try-now-button,
+  .how-to-use-link {
+    padding: 8px 16px;
+    font-size: 0.9em;
+  }
+
+  .how-to-use-link {
+    margin-bottom: 100px;
+  }
+
+  .feature-box {
+    width: 500%;
+  }
+
+  .footer-section h3 {
+    font-size: 1em;
+  }
+
+  .footer-section p {
+    font-size: 0.9em;
+  }
+}
